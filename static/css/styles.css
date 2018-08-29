@@ -250,6 +250,42 @@ nav .home {
     text-align: right;
 }
 
+.leaders {
+  padding-right: 10px;
+  background: #d4d1d1;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+  padding-left: 55px;
+}
+
+.leaderboard-header {
+  width: 100%;
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 65px 1fr 65px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  margin: 5px 0;
+  margin-top: 15px;
+  background: #d9d9e2;
+  text-align: center;
+}
+
+.leader-container {
+  box-sizing: border-box;
+  padding: 10px;
+  padding-top: 20px;
+  border: 1px solid #9e9a9a;
+  height: 100%;
+  text-align: center;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.leader-container > span {
+  font-weight: 600;
+}
 
 @media only screen
 	and (max-width: 812px)
@@ -344,6 +380,16 @@ nav .home {
     
     .instructions-inner ol {
       font-size: 2vw;
+    }
+    
+    /**************************leaderbord page**********************************/
+    .leaderboard-header {
+      padding: 10px;
+    }
+    
+    .leaders {
+      grid-column: 2;
+      padding-left: 10px;
     }
     
 }
