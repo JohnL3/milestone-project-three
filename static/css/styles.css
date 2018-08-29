@@ -257,7 +257,9 @@ nav {
 		height: 100vw;
 		transform: rotate(90deg);
 	}
-    
+	
+    .game-instructions,
+    #board,
     main {
 		height: 100vw;
 		width: 100vh;
@@ -311,4 +313,32 @@ nav {
     .title h3 {
       font-size: 4vw;
     }
+    /***********************game board******************************************/
+    
+    #board {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    .sqr-con {
+      margin-left: 0;
+    }
+    
+    .type {
+      font-size: 2vw;
+    }
+    /***********************game instruction panel*******************************/
+    
+    .game-instructions {
+	    padding-left: 300px;
+	  }
+	  
+	  .instructions-inner h1 {
+      font-size: 3vw;
+    }
+    
+    .instructions-inner ol {
+      font-size: 2vw;
+    }
+    
 }
