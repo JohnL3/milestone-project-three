@@ -15,7 +15,7 @@ Session(app)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    return ('Hello')
+    return render_template('index.html')
 
 @app.route('/leavegame', methods=['GET', 'POST'])
 def leavegame():

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block head %}
+
+
+{% endblock %}
+
+{% block content %}
+<div id='md-screen-con' class='sm-screen-con'>
+    <aside>
+        <div id='burger'>
+            <span class='burger'></span>
+            <span class='burger'></span>
+            <span class='burger'></span>
+        </div>
+        <div class='aside-inner-box'>
+            <nav >
+              <span class='home'><a href="{{ url_for('leaderboard') }}" class="active">LEADERBOARD</a></span> 
+            </nav>
+        </div>
+       
+        <form id='myForm' action='http://question-answer-johnl3.c9users.io/' method='POST'>
+            <div id="user">
+                <label class='user'>Max characthers 12</label>
+                <input class='user' type='text' required='true' maxlength='12' name='username' value='{{username}}'>
+                <button type="submit" value='submit' class="user btn">Enter Game</button>
+            </div>
+        </form>
+    </aside>
+    <main class='index'>
+        <div class='title'>
+            <h1>QUESTION & ANSWER</h1>
+            <h3>Pick a Username and Enter the Game</h3>
+        </div>
+    </main>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src={{url_for('static',filename='js/main.js')}}> </script>
+{% endblock %}
