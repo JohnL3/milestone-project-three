@@ -31,13 +31,9 @@
               <div id='leader-board'>
                   <span class='leader-board'>MINI LEADER BOARD</span>
                   <span></span><span></span><span>SCORE</span>
-                  <!--
-                  {%  for item in leader %}
-                  <span class='user lead'>{{loop.index}}</span>
-                  <span class='user lead'>{{item[0]}}</span>
-                  <span class='user lead usr-score {{item[0]}}'>{{item[1]}}</span>
-                  {% endfor%}
-                  -->
+                  
+                  
+                  
               </div>
               <br>
               <div id='online'>
@@ -47,14 +43,31 @@
                   <span class="score">SCORE</span>
                   <div id='online-users'>
                 
+                
+                
                   </div>
                   
               </div>
             </div>
-          
-          
         </div>
     </aside>
+    
+    <div class='game-instructions'>
+      <div class='instructions-inner'>
+        <h1>Instructions</h1>
+        <div>
+          <ol>
+            <li>Click on a panel to get a question.</li>
+            <li>Panel border turns green for correct answers.</li>
+            <li>Panel border turns red for incorrect answers.</li>
+            <li>If your score makes the leaderboard it will show up after you Finsih game.</li>
+            <li>If you quit game you will have to come back to see if you made the leaderboard.</li>
+            <li>Its recommended to leave game via the home or leaderboard link, If you close tab or tab back you will be prompted to confirm you wish to leave.</li>
+          </ol>
+        </div>
+        <button class='close-instructions'>CLOSE</button>
+      </div>
+    </div>
     
 </div>
 {% endblock %}
