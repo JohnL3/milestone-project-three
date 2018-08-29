@@ -38,7 +38,7 @@ aside {
   letter-spacing: 1.5px;
 }
 
-/************************ burger icon used on index game and leaderboard ****************/
+/************************ burger icon used on index game and leaderboard pages ****************/
 .burger-container {
   display: grid;
   width: 100%;
@@ -241,7 +241,7 @@ nav {
   border: 5px solid red;
 }
 
-.type {
+.question-type {
   font-size: 2.5vw;
 }
 
@@ -324,7 +324,7 @@ nav {
       margin-left: 0;
     }
     
-    .type {
+    .question-type {
       font-size: 2vw;
     }
     /***********************game instruction panel*******************************/
