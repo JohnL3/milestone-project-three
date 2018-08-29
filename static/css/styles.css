@@ -245,6 +245,11 @@ nav {
   font-size: 2.5vw;
 }
 
+/************************leaderboard page***************************************/
+nav .home {
+    text-align: right;
+}
+
 
 @media only screen
 	and (max-width: 812px)

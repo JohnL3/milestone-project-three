@@ -45,7 +45,7 @@ def index():
 
 @app.route('/leavegame', methods=['GET', 'POST'])
 def leavegame():
-    return ('Hello')
+    return redirect(url_for('index'))
     
 @app.route('/game', methods=['GET', 'POST'])
 def game():
@@ -62,7 +62,7 @@ def answer():
     
 @app.route('/leaderboard')
 def leaderboard():
-    return ('Hello')
+    return render_template('/leaderboard.html')
 
 
 

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+
+
+{% endblock %}
+
+{% block content %}
+<div id='md-screen-con'>
+    <aside>
+        <div class='burger-container'>
+            <div id='burger'>
+                <span class='burger'></span>
+                <span class='burger'></span>
+                <span class='burger'></span>
+            </div>
+        </div>
+        <div class='aside-inner-box'>
+            <nav >
+              <span id='instruct'><a href="{{ url_for('game') }}" class="active">GAME PAGE</a></span>
+              <span class='home'><a href="{{ url_for('index') }}" class="active">HOME PAGE</a></span> 
+            </nav>
+        </div>
+    </aside>
+</div>
+{% endblock %}
