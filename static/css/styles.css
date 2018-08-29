@@ -1,0 +1,108 @@
+body, html {
+    margin: 0;
+}
+
+/**************** aside used on index game and leaderboard ****************/
+aside a {
+	text-decoration: none;
+}
+
+aside a:visited {
+  color: #2f2fe2;
+}
+
+aside a:hover {
+  color: white;
+}
+	
+aside {
+  width: 290px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;/*-245px;*/
+  background: #262626;
+  box-sizing: border-box;
+  padding: 40px 10px;
+  padding-top: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #d4d4d4;
+  z-index: 100;
+}
+
+.aside-inner-box {
+  display: grid;
+  width: 210px;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+}
+
+/************************ burger icon used on index game and leaderboard ****************/
+.burger-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 30px;
+}
+#burger {
+  width: 30px;
+  margin: 10px 0;
+  grid-column: 2;
+}
+
+.burger {
+  display: block;
+  border: 2px solid white;
+  margin: 5px 0;
+}
+
+/*******************************************************/
+
+/*************************** used only on index ************************/
+
+aside input {
+  margin: 10px 0;
+  height: 20px;
+  padding-left: 5px;
+  display: block;
+}
+
+aside button {
+  height: 30px;
+}
+
+#user {
+  margin-top: 20px;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+.title h1  {
+  font-size: 7vw;
+}
+
+.title h3 {
+  font-size: 5vw;
+}
+/**************************************************************************/
+
+/************* common to all pages ****************************************/
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 2px solid;
+  padding-top: 5px;
+  text-align: inherit;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-left: 45px;
+}

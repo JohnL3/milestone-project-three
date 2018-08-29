@@ -7,22 +7,24 @@
 {% block content %}
 <div id='md-screen-con' class='sm-screen-con'>
     <aside>
-        <div id='burger'>
-            <span class='burger'></span>
-            <span class='burger'></span>
-            <span class='burger'></span>
+        <div class='burger-container'>
+            <div id='burger'>
+                <span class='burger'></span>
+                <span class='burger'></span>
+                <span class='burger'></span>
+            </div>
         </div>
         <div class='aside-inner-box'>
             <nav >
-              <span class='home'><a href="{{ url_for('leaderboard') }}" class="active">LEADERBOARD</a></span> 
+              <span><a href="{{ url_for('leaderboard') }}">LEADERBOARD</a></span> 
             </nav>
         </div>
        
         <form id='myForm' action='http://question-answer-johnl3.c9users.io/' method='POST'>
             <div id="user">
-                <label class='user'>Max characthers 12</label>
-                <input class='user' type='text' required='true' maxlength='12' name='username' value='{{username}}'>
-                <button type="submit" value='submit' class="user btn">Enter Game</button>
+                <label>Max characthers 12</label>
+                <input type='text' required='true' maxlength='12' name='username' value='{{username}}'>
+                <button type="submit" value='submit'>Enter Game</button>
             </div>
         </form>
     </aside>
