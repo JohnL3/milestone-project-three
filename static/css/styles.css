@@ -20,7 +20,7 @@ aside {
   height: 100%;
   position: fixed;
   top: 0;
-  left: -245px;
+  left: 0;/*-245px;*/
   background: #262626;
   box-sizing: border-box;
   padding: 40px 10px;
@@ -97,7 +97,18 @@ main {
   margin-left: 45px;
 }
 /**************************************************************************/
+/**********************game page ******************************************/
+#quit-game {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 135px 1fr;
+}
 
+#quit-game .home {
+    text-align: right;
+}
+
+/**************************************************************************/
 /************* common to all pages ****************************************/
 nav {
   display: grid;
