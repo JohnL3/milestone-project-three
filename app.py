@@ -48,7 +48,7 @@ def leavegame():
     
 @app.route('/game', methods=['GET', 'POST'])
 def game():
-    return ('Hello')
+    return render_template('game.html')
     
 @app.route('/questions', methods=['GET', 'POST'])
 def questions():
