@@ -1,5 +1,5 @@
 body, html {
-    margin: 0;
+  margin: 0;
 }
 
 /**************** aside used on index game and leaderboard ****************/
@@ -20,7 +20,7 @@ aside {
   height: 100%;
   position: fixed;
   top: 0;
-  left: 0;/*-245px;*/
+  left: -245px;
   background: #262626;
   box-sizing: border-box;
   padding: 40px 10px;
@@ -76,10 +76,10 @@ aside button {
 }
 
 .title {
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 0 10px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 .title h1  {
   font-size: 7vw;
@@ -87,6 +87,14 @@ aside button {
 
 .title h3 {
   font-size: 5vw;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 45px;
 }
 /**************************************************************************/
 
@@ -99,10 +107,70 @@ nav {
   text-align: inherit;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin-left: 45px;
+
+@media only screen
+	and (max-width: 812px)
+	and (max-height: 415px)
+	and (orientation: landscape) {
+	#burger {
+	   display: block;
+	}
+    .sm-screen-con {
+		height: 100vw;
+		transform: rotate(90deg);
+	}
+    
+    main {
+		height: 100vw;
+		width: 100vh;
+	}
+	main {
+		justify-content: initial;
+	}
+	.title {
+		width: 80%;
+	}
+	.title h1 {
+		font-size: 5vw;
+	}
+	.title h3 {
+		font-size: 4vw;
+	}   
+}
+
+@media only screen and (min-width: 768px) and (min-height: 410px) {
+    #md-screen-con {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+    }
+    
+    aside {
+      display: block;
+      left: 0;
+      grid-column: 1;
+      padding-top: 40px;
+    }
+    
+    #burger {
+      display: none;
+    }
+    
+    main {
+      margin-left: 0;
+      grid-column: 2;
+      box-sizing: border-box;
+      padding: 0 20px;
+      margin-left: 0;
+    }
+    
+    title {
+      padding: 0;
+    }
+    .title h1  {
+      font-size: 5vw;
+    }
+
+    .title h3 {
+      font-size: 4vw;
+    }
 }
