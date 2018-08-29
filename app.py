@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from flask_session import Session
 from flask_socketio import SocketIO, send
 import json
+from data.helper import id_type
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mycrazyoldcodingsecret'
