@@ -15,7 +15,32 @@ Session(app)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    return render_template('index.html')
+    username = ''
+    '''
+    First if is so I can have username always in input box so person dosent have to try and remember
+    username when the close browser and come back another time if they created one previously.
+    And make sure a blank username is not being used by removing required field from input box
+    '''
+    if 'username' in session and session.get('username') != '':
+        username = session.get('username')
+        
+    if request.method == 'POST':
+        username = request.form['username']
+        
+        #In case anyone deletes required field from input and trys to enter without username
+        #they stay on home page
+        if username != '':
+            if 'username' in session:
+                if session.get('username') == username:
+                    return redirect(url_for('game'))
+            else:
+                session['username'] = username
+               
+                return redirect(url_for('game'))
+        else:
+            return render_template('index.html')
+            
+    return render_template('index.html', username=username)
 
 @app.route('/leavegame', methods=['GET', 'POST'])
 def leavegame():
