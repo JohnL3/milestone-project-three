@@ -197,6 +197,54 @@ nav {
   padding: 20px;
 }
 
+/*************************game board***************************************/
+#board {
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.sqr-con {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  grid-auto-rows: 1fr;
+  height: 100%;
+  margin-left: 40px;
+}
+
+.sqr {
+  width: 100%;
+  background: #d3d8da;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.correct {
+  border: 5px solid green;
+  font-size: 2vw;
+}
+
+.correct:hover {
+  cursor: default;
+}
+.correct span,
+.wrong span {
+  font-size: 3.5vw;
+}
+
+.wrong {
+  border: 5px solid red;
+}
+
+.type {
+  font-size: 2.5vw;
+}
+
 
 @media only screen
 	and (max-width: 812px)
