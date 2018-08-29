@@ -108,6 +108,40 @@ main {
     text-align: right;
 }
 
+.welcome {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+.u-name {
+  text-align: end;
+}
+
+#leader-board {
+  display: grid;
+  grid-template-columns: 30px 1fr 55px;
+  grid-template-rows: 30px;
+}
+
+#lives, 
+#score, 
+#online,
+#online-users {
+  display: grid;
+  grid-template-columns: 1fr 55px 55px;
+  grid-auto-rows: 25px;
+}
+
+.online, 
+.leader-board,
+#online-users {
+  grid-column: 1/-1;
+}
+
+.score {
+    grid-column: 3;
+}
 /**************************************************************************/
 /************* common to all pages ****************************************/
 nav {

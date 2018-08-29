@@ -19,6 +19,40 @@
               <span class='my-leader-board'><a href="{{ url_for('leaderboard') }}" class="active">LEADER BOARD</a></span>
               <span class='home'><a href="{{ url_for('leavegame') }}" class="active">HOME</a></span>
             </nav>
+            
+            <div class='welcome'>
+                <span>WELCOME</span>
+                <div class='u-name'>
+                  <span id='username' class='user'>{{username}}</span>
+                </div>
+            </div>
+          
+            <div id="details">
+              <div id='leader-board'>
+                  <span class='leader-board'>MINI LEADER BOARD</span>
+                  <span></span><span></span><span>SCORE</span>
+                  <!--
+                  {%  for item in leader %}
+                  <span class='user lead'>{{loop.index}}</span>
+                  <span class='user lead'>{{item[0]}}</span>
+                  <span class='user lead usr-score {{item[0]}}'>{{item[1]}}</span>
+                  {% endfor%}
+                  -->
+              </div>
+              <br>
+              <div id='online'>
+                  <span class='user online'>USERS ONLINE</span>
+                  <span class='user'></span>
+                  
+                  <span class="score">SCORE</span>
+                  <div id='online-users'>
+                
+                  </div>
+                  
+              </div>
+            </div>
+          
+          
         </div>
     </aside>
     
