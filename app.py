@@ -55,17 +55,36 @@ def game():
     idType = id_type()
     if 'username' in session:
         user = session.get('username')
+        
         return render_template('game.html', username=user, type_id = idType)
     else:
         return redirect(url_for('index'))
+        
     
 @app.route('/questions', methods=['GET', 'POST'])
 def questions():
-    return ('Hello')
+    '''
+    Checking if request is a post else send them to home page as they shouldnt
+    be typing web address + /questions into browser
+    '''
+    if request.method == 'POST':
+        data = {'msg':'setting things up'}
+        return jsonify(data)
+    else:
+        return redirect(url_for('index'))
     
 @app.route('/answer', methods=['GET', 'POST'])
 def answer():
-    return ('Hello')
+    '''
+    Checking if request is a post else send them to home page as they shouldnt
+    be typing web address + /answer into browser
+    '''
+    if request.method == 'POST':
+        data = {'msg':'setting things up'}
+        return jsonify(data)
+    else:
+        return redirect(url_for('index'))
+   
     
 @app.route('/leaderboard')
 def leaderboard():
