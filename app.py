@@ -14,12 +14,14 @@ app.config['SECRET_KEY'] = 'mycrazyoldcodingsecret'
 socketio = SocketIO(app)
 
 SESSION_TYPE = 'filesystem'
+SESSION_PERMANENT = True
 
 app.config.from_object(__name__)
 Session(app)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    session.permanent = True
     username = ''
     '''
     First if is so I can have username always in input box so person dosent have to try and remember
@@ -103,7 +105,21 @@ def questions():
     '''
     if request.method == 'POST':
         data = request.get_json()
-        return jsonify(data)
+        '''
+        As im using permanent sessions and memory only storage and heroku sleeps
+        Its possible for a user to get here
+        
+        if 'username' in session:
+            if session.get('username') not in my_users:
+                user = session.get('username')
+                my_users[user] = set_up_new_user(user)
+        '''
+        
+        my_quest = get_question(data['quest_id'])
+        
+        my_users[session.get('username')]['answered'].append(data['quest_id'])
+        
+        return jsonify(my_quest)
     else:
         return redirect(url_for('index'))
     
