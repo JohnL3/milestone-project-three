@@ -102,7 +102,7 @@ def questions():
     be typing web address + /questions into browser
     '''
     if request.method == 'POST':
-        data = {'msg':'setting things up'}
+        data = request.get_json()
         return jsonify(data)
     else:
         return redirect(url_for('index'))
