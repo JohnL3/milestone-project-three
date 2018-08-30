@@ -75,7 +75,7 @@ def game():
                 online = remove_user_online(user,online)
                 online = add_user_online(my_users,user,online)
         
-            return render_template('game.html', username=user, type_id = idType)
+            return render_template('game.html', username=user, type_id = idType, on_line = online)
         else:
             print('user not in my_users adding him',user)
             user = session.get('username')

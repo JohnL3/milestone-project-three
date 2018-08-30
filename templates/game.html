@@ -30,7 +30,7 @@
             <div id="details">
               <div id='leader-board'>
                   <span class='leader-board'>MINI LEADER BOARD</span>
-                  <span></span><span></span><span>SCORE</span>
+                  <span class='score'>SCORE</span>
                   
                   
                   
@@ -42,9 +42,11 @@
                   
                   <span class="score">SCORE</span>
                   <div id='online-users'>
-                
-                
-                
+                    {% for key, user in on_line.items() %}
+                    <span class='user usr-name'>{{user['username']}}</span>
+                    
+                    <span class='user usr-score {{user["username"]}}'>{{user['score']}}</span>
+                    {% endfor %}
                   </div>
                   
               </div>
