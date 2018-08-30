@@ -103,7 +103,7 @@ function postAnswers(data) {
                   $('#'+d.msg[0].id).addClass('wrong answered');
                 }
                 answers = [];
-                
+                gameOver();
               },500);
           } else {
               setTimeout(function(){
@@ -121,6 +121,17 @@ function postAnswers(data) {
     });
 }
 
+function gameOver() {
+  setTimeout(function(){
+    $('.game-over').css('display','flex');
+    let id = $('#username').text();
+    let score = $('.'+id).text();
+    $('.final-score').text(score);
+    if($('.game-over').css('left') === '-1550px') {
+        $('.game-over').animate({left: '0'})
+   }
+  },500);
+}
 
 //Display question on page add required elements
 function createQA(data, id) {
