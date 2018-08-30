@@ -52,12 +52,20 @@ def index():
 
 @app.route('/leavegame', methods=['GET', 'POST'])
 def leavegame():
-    return redirect(url_for('index'))
+    global leader_board
+    if 'username' in session:
+        user = session.get('username')
+        my_users[user]['game-over'] = True
+        leader_board = get_leaderboard(my_users, leader_board)
+        
+        return redirect(url_for('index'))
     
     
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     global online
+    global leader_board
+    
     idType = id_type()
     
     if 'username' in session:
@@ -75,8 +83,10 @@ def game():
                 print('user in online',user)
                 online = remove_user_online(user,online)
                 online = add_user_online(my_users,user,online)
-        
-            return render_template('game.html', username=user, type_id = idType, on_line = online)
+            
+            leader_board = get_leaderboard(my_users, leader_board)
+            print('leader_board',leader_board)
+            return render_template('game.html', username=user, type_id = idType, on_line = online, leader = leader_board)
         else:
             print('user not in my_users adding him',user)
             user = session.get('username')
@@ -91,7 +101,9 @@ def game():
                 online = remove_user_online(user,online)
                 online = add_user_online(my_users,user,online)
                 print('ONLINE',online)
-            return render_template('game.html',username=user, type_id = idType, on_line = online)
+            print('leader_board',leader_board)
+            leader_board = get_leaderboard(my_users, leader_board)
+            return render_template('game.html',username=user, type_id = idType, on_line = online, leader = leader_board)
     else:
         return redirect(url_for('index'))
         
@@ -141,10 +153,16 @@ def answer():
             my_users[session.get('username')]['score'] = my_users[session.get('username')]['score']+1
         else:
             my_users[user]['wrong'].append([result[0]['id'],result[0]['answer']])
-
-          
-        data = {'msg': result}
-        return jsonify(data)
+        
+        answered_count = len(my_users[user]['answered'])  
+        if answered_count == 2:
+            my_users[user]['game-over'] = True
+            
+            data = {'msg': result,'game-over': True}
+            return jsonify(data)
+        else:
+            data = {'msg': result}
+            return jsonify(data)
     else:
         return redirect(url_for('index'))
    

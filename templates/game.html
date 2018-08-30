@@ -31,7 +31,11 @@
               <div id='leader-board'>
                   <span class='leader-board'>MINI LEADER BOARD</span>
                   <span class='score'>SCORE</span>
-                  
+                  {%  for item in leader %}
+                  <span class='user lead'>{{loop.index}}</span>
+                  <span class='user lead'>{{item[0]}}</span>
+                  <span class='user lead usr-score {{item[0]}}'>{{item[1]}}</span>
+                  {% endfor%}
                   
                   
               </div>
