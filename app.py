@@ -40,6 +40,7 @@ def index():
                     return redirect(url_for('game'))
             else:
                 session['username'] = username
+                
                
                 return redirect(url_for('game'))
         else:
@@ -55,12 +56,41 @@ def leavegame():
     
 @app.route('/game', methods=['GET', 'POST'])
 def game():
-
+    global online
     idType = id_type()
+    
     if 'username' in session:
         user = session.get('username')
+        print('user in session', user)
+        if user in my_users:
+            print('user in my_users', user)
+            del my_users[user]['username']
+            my_users[user] = set_up_new_user(user)
+            
+            if not user in online:
+                print('user not in online', user)
+                online = add_user_online(my_users, user, online)
+            else:
+                print('user in online',user)
+                online = remove_user_online(user,online)
+                online = add_user_online(my_users,user,online)
         
-        return render_template('game.html', username=user, type_id = idType)
+            return render_template('game.html', username=user, type_id = idType)
+        else:
+            print('user not in my_users adding him',user)
+            user = session.get('username')
+            my_users[user] = set_up_new_user(user)
+            print('my_users',my_users)
+            if not user in online:
+                print('user not in online addding',user)
+                online = add_user_online(my_users, user, online)
+                print('ONLINE',online)
+            else:
+                print('user in online',user)
+                online = remove_user_online(user,online)
+                online = add_user_online(my_users,user,online)
+                print('ONLINE',online)
+            return render_template('game.html',username=user, type_id = idType, on_line = online)
     else:
         return redirect(url_for('index'))
         
