@@ -289,6 +289,18 @@ nav .home {
   font-weight: 600;
 }
 
+.username {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 65px 1fr 65px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  padding: 10px 0;
+  margin: 5px 0;
+  background: #d9d9e2;
+  text-align: center;
+}
+
 /********************* question and answer modal *******************************/
 
 .q-a-outer {
@@ -503,5 +515,7 @@ nav .home {
       grid-column: 2;
       padding-left: 10px;
     }
+    
+    
     
 }

@@ -169,7 +169,14 @@ def answer():
     
 @app.route('/leaderboard')
 def leaderboard():
-    return render_template('/leaderboard.html')
+    global leader_board
+    if 'username' in session:
+        user = session.get('username')
+        my_users[user]['game-over'] = True
+        leader_board = get_leaderboard(my_users, leader_board)
+        print('Leaderboard',leader_board)
+        
+        return render_template('leaderboard.html', leaders=leader_board)
 
 
 

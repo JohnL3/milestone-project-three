@@ -31,9 +31,13 @@
           <span>SCORE</span>
         </div>
         <div class='all-leaders'>
-          
-          
-          
+          {% for leader in leaders %}
+          <div class="username">
+            <span>{{loop.index}}</span>
+            <span>{{leader[0]}}</span>
+            <span>{{leader[1]}}</span>
+          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
