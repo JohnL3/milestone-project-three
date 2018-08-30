@@ -42,15 +42,22 @@ def index():
             return render_template('index.html')
             
     return render_template('index.html', username=username)
+    
 
 @app.route('/leavegame', methods=['GET', 'POST'])
 def leavegame():
     return redirect(url_for('index'))
     
+    
 @app.route('/game', methods=['GET', 'POST'])
 def game():
+
     idType = id_type()
-    return render_template('game.html', type_id = idType)
+    if 'username' in session:
+        user = session.get('username')
+        return render_template('game.html', username=user, type_id = idType)
+    else:
+        return redirect(url_for('index'))
     
 @app.route('/questions', methods=['GET', 'POST'])
 def questions():
