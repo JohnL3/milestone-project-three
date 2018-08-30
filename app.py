@@ -14,7 +14,6 @@ app.config['SECRET_KEY'] = 'mycrazyoldcodingsecret'
 socketio = SocketIO(app)
 
 SESSION_TYPE = 'filesystem'
-SESSION_PERMANENT = True
 
 app.config.from_object(__name__)
 Session(app)
@@ -125,12 +124,26 @@ def questions():
     
 @app.route('/answer', methods=['GET', 'POST'])
 def answer():
+    global online
+    global leader_board
     '''
     Checking if request is a post else send them to home page as they shouldnt
     be typing web address + /answer into browser
     '''
+    
     if request.method == 'POST':
-        data = {'msg':'setting things up'}
+        data = request.get_json()
+        user = session.get('username')
+        result = check_answer(data['questionId'],data['answer'])
+       
+        if result[0]['result'] == 'correct':
+            online = update_user_online(user, online)
+            my_users[session.get('username')]['score'] = my_users[session.get('username')]['score']+1
+        else:
+            my_users[user]['wrong'].append([result[0]['id'],result[0]['answer']])
+
+          
+        data = {'msg': result}
         return jsonify(data)
     else:
         return redirect(url_for('index'))
