@@ -359,6 +359,27 @@ nav .home {
   background: black;
 }
 
+/********************game over***********************************************/
+.game-over {
+  width: calc(100% - 45px);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: -1550px;
+  padding-left: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+.game-over-inner {
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 50vh;
+  background: white;
+  width: 100%;
+}
+
 
 @media only screen
 	and (max-width: 812px)
@@ -371,6 +392,7 @@ nav .home {
 		height: 100vw;
 		transform: rotate(90deg);
 	}
+	  .game-over,
 	  .error-msg,
     .game-instructions,
     #board,
@@ -459,6 +481,18 @@ nav .home {
       grid-column: 2;
       grid-row: 1;
       padding-left: 260px;
+    }
+    
+    .game-over {
+      width: calc(100% - 295px);
+      padding-left: 295px;
+    }
+    .game-over-inner {
+      width: 50%;
+      text-align: center;
+    }
+    p {
+      text-align: left;
     }
     /**************************leaderbord page**********************************/
     .leaderboard-header {
