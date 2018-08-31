@@ -139,6 +139,13 @@ main {
   grid-column: 1/-1;
 }
 
+#online-users {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 200px;
+  width: 225px;
+}
+
 .score,
 .usr-score {
     grid-column: 3;
