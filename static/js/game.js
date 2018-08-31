@@ -1,3 +1,25 @@
+let myAlert = true;
+// used for when user clicks to close browser window or tab back
+// i need to remove user from user list of other users online
+window.onbeforeunload  = function(e) {
+    if (myAlert === true) {
+        let user = $('#username').text();
+        clearScreen();
+        let dialoug = 'Clearing your username from server';
+        socket.emit('exitgame', user);
+        e.returnValue = dialoug;
+        return dialoug;
+    }
+    myAlert = true;
+};
+
+// called if browser window is being closed 
+function clearScreen() {
+  $('#details').text('You closed tab, Need to clear you from online users. If you didnt mean to leave, click HOME link and rejoin.');
+  $('.sqr-con').css('display','none');
+  $('')
+}
+
 // basic set up of socketio and message to say its working
 let socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 socket.on('connect', function(){
@@ -13,14 +35,14 @@ $('.home').on('click', function(){
   let user = $('#username').text();
   console.log('USER',user);
   socket.emit('exitgame', user);
- 
+  myAlert = false;
 });
 
-// when user clicks home this fires exitgame and removes user from user list of all users online
+// when user clicks leaderboard this fires exitgame and removes user from user list of all users online
 $('.my-leader-board').click(function(){
   let user = $('#username').text();
   socket.emit('exitgame', user);
-  
+  myAlert = false;
 });
 
 //shows users who are online and who leave
