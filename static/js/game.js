@@ -11,6 +11,15 @@ $('#burger').click(function(){
    }
 });
 
+$( window ).resize(function() {
+  if($(window).width() > 657) {
+	  $('aside').css('left','0');
+  } else {
+	  $('aside').css('left','-245px');
+  }
+});
+
+
 let previousData;
 let answers = [];
 
