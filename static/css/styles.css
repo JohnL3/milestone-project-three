@@ -405,6 +405,7 @@ nav .home {
 	  transform: rotate(90deg);
 	}
 	
+	.q-a-outer,
 	.leaders,
 	.game-over,
 	.error-msg,
