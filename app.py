@@ -179,6 +179,9 @@ def leaderboard():
         return render_template('leaderboard.html', leaders=leader_board)
 
 
+@socketio.on('message')
+def handleMessage(msg):
+    socketio.emit('message', {'data': msg}, broadcast=True)
 
 
 

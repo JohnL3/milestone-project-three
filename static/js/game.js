@@ -1,3 +1,15 @@
+// basic set up of socketio and message to say its working
+let socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+socket.on('connect', function(){
+    socket.emit('message',{'message': 'Up and running'});
+});
+
+socket.on('message', function(msg){
+      console.log(msg);
+  });
+  
+/*************************************************************************************************/
+
 $('.close-instructions').click(function(){
   $('.game-instructions').css('display','none');
 });
