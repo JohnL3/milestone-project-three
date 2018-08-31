@@ -90,7 +90,7 @@ def game():
             socketio.emit('in_out_game', {'data': online})
             socketio.emit('leaders', {'data': leader_board})
             
-            return render_template('game.html', username=user, type_id = idType, on_line = online, leader = leader_board)
+            return render_template('game.html', username=user, type_id = idType, on_line = online, leader = leader_board[:3])
         else:
             print('user not in my_users adding him',user)
             user = session.get('username')
@@ -111,7 +111,7 @@ def game():
             socketio.emit('in_out_game', {'data': online})
             socketio.emit('leaders', {'data': leader_board})
             
-            return render_template('game.html',username=user, type_id = idType, on_line = online, leader = leader_board)
+            return render_template('game.html',username=user, type_id = idType, on_line = online, leader = leader_board[:3])
     else:
         return redirect(url_for('index'))
         
@@ -150,7 +150,6 @@ def answer():
     Checking if request is a post else send them to home page as they shouldnt
     be typing web address + /answer into browser
     '''
-    
     if request.method == 'POST':
         data = request.get_json()
         user = session.get('username')
