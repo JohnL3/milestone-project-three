@@ -464,6 +464,19 @@ nav .home {
     .title h3 {
       font-size: 4vw;
     }
+    
+    /***********************question and answer*********************************/
+    
+    .q-a-outer {
+      position: inherit;
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    #question-answer {
+      margin-left: 0;
+    }
+    
     /***********************game board******************************************/
     
     #board {
