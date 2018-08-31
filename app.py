@@ -57,7 +57,7 @@ def leavegame():
         user = session.get('username')
         my_users[user]['game-over'] = True
         leader_board = get_leaderboard(my_users, leader_board)
-        
+        socketio.emit('leaders', {'data': leader_board})
         return redirect(url_for('index'))
     
     
@@ -88,6 +88,7 @@ def game():
             print('leader_board',leader_board)
             
             socketio.emit('in_out_game', {'data': online})
+            socketio.emit('leaders', {'data': leader_board})
             
             return render_template('game.html', username=user, type_id = idType, on_line = online, leader = leader_board)
         else:
@@ -108,6 +109,7 @@ def game():
             leader_board = get_leaderboard(my_users, leader_board)
             
             socketio.emit('in_out_game', {'data': online})
+            socketio.emit('leaders', {'data': leader_board})
             
             return render_template('game.html',username=user, type_id = idType, on_line = online, leader = leader_board)
     else:
@@ -167,7 +169,9 @@ def answer():
         answered_count = len(my_users[user]['answered'])  
         if answered_count == 2:
             my_users[user]['game-over'] = True
+            leader_board = get_leaderboard(my_users, leader_board)
             
+            socketio.emit('leaders', {'data': leader_board})
             data = {'msg': result,'game-over': True}
             return jsonify(data)
         else:
@@ -185,8 +189,8 @@ def leaderboard():
         user = session.get('username')
         my_users[user]['game-over'] = True
         leader_board = get_leaderboard(my_users, leader_board)
-        print('Leaderboard',leader_board)
         
+        socketio.emit('leaders', {'data': leader_board})
         return render_template('leaderboard.html', leaders=leader_board)
     else:
         leader_board = get_leaderboard(my_users, leader_board)

@@ -46,6 +46,28 @@ socket.on('my_score', function(json){
   let user = json.user;
   $('.single.'+user).text(score);
 });
+
+//shows the leaderboard
+socket.on('leaders', function(json){
+  
+  //only want top 3 for game page view
+  let data = json.data.slice(0,3);
+  
+  let lead = $('.lead');
+  
+  lead.html('');
+    
+    for (let item in data) {
+      let ind = '<span class="user lead">'+(+item +1)+'</span>';
+       
+       let user, score;
+       [user, score] = data[item];
+       let userSpan = '<span class= "user lead">'+user+'</span>';
+       let scoreSpan = '<span class= "user lead usr-score">'+score+'</span>';
+       
+       $('#leader-board').append(ind, userSpan,scoreSpan);
+    }
+});
   
 /*************************************************************************************************/
 
