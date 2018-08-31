@@ -400,15 +400,17 @@ nav .home {
 	#burger {
 	   display: block;
 	}
-    .sm-screen-con {
-		height: 100vw;
-		transform: rotate(90deg);
+  .sm-screen-con {
+	  height: 100vw;
+	  transform: rotate(90deg);
 	}
-	  .game-over,
-	  .error-msg,
-    .game-instructions,
-    #board,
-    main {
+	
+	.leaders,
+	.game-over,
+	.error-msg,
+  .game-instructions,
+  #board,
+  main {
 		height: 100vw;
 		width: 100vh;
 	}
