@@ -17,7 +17,6 @@ window.onbeforeunload  = function(e) {
 function clearScreen() {
   $('#details').text('You closed tab, Need to clear you from online users. If you didnt mean to leave, click HOME link and rejoin.');
   $('.sqr-con').css('display','none');
-  $('')
 }
 
 // basic set up of socketio and message to say its working
@@ -27,13 +26,13 @@ socket.on('connect', function(){
 });
 
 socket.on('message', function(msg){
-      console.log(msg);
+     
   });
   
 // when user clicks home this fires exitgame and removes user from user list of all users online
 $('.home').on('click', function(){
   let user = $('#username').text();
-  console.log('USER',user);
+  
   socket.emit('exitgame', user);
   myAlert = false;
 });
@@ -51,7 +50,6 @@ socket.on('in_out_game', function(json){
     online.html('');
     let users = json.data;
     
-    console.log('in_out_game',json.data);
     let user = Object.keys(users);
     
     for (let key in user) {
@@ -100,9 +98,9 @@ $('.close-instructions').click(function(){
 $('#burger').click(function(){
 
    if($('aside').css('left') === '-245px') {
-        $('aside').animate({left: '0'})
+        $('aside').animate({left: '0'});
    } else {
-       $('aside').animate({left: '-245px'})
+       $('aside').animate({left: '-245px'});
    }
 });
 
@@ -122,8 +120,8 @@ let answers = [];
 $('.sqr').click(function(e){
   if(!$(this).hasClass('answered')) {
       let clickedOn = $(this).attr('id');
-      $(this).css('background','#607D8B')
-      console.log(clickedOn);
+      $(this).css('background','#607D8B');
+      
       let data = {"quest_id": clickedOn};
       let url = 'http://question-answer-johnl3-1.c9users.io/questions';
     
@@ -134,7 +132,7 @@ $('.sqr').click(function(e){
         dataType: 'json',
         data : JSON.stringify(data),
         success: function(d){
-            console.log('your question',d);
+            
             previousData = d;
             createQA(d,clickedOn);
             $('.q-a-outer').css('display','flex');
@@ -159,7 +157,7 @@ $('#ans-button').click(()=>{
       answer: answers
     };
     if(answers.length > 0){
-    console.log('answerData',answerData);
+    
     postAnswers(answerData);
     } else {
       $('.error-msg').css('display','flex');
@@ -175,7 +173,6 @@ $('#ans-button').click(()=>{
         'answer': answers
       };
       
-      console.log('answerData',answerData);
       postAnswers(answerData);
     } else {
       $('.error-msg').css('display','flex');
@@ -196,7 +193,7 @@ function postAnswers(data) {
       dataType: 'json',
       data : JSON.stringify(data),
         success: function(d){
-        console.log('answered data',d);
+        
         $('.q-a-outer').css('display','none');
         $('#section-c').remove();
          if('game-over' in d) {
@@ -211,8 +208,6 @@ function postAnswers(data) {
               },500);
           } else {
               setTimeout(function(){
-                //$('.q-a-outer').css('display','none');
-                //$('#section-c').remove();
                 if (d.msg[0].result === 'correct') {
                   $('#'+d.msg[0].id).addClass('correct answered');
                 } else {
@@ -232,7 +227,7 @@ function gameOver() {
     let score = $('.'+id).text();
     $('.final-score').text(score);
     if($('.game-over').css('left') === '-1550px') {
-        $('.game-over').animate({left: '0'})
+        $('.game-over').animate({left: '0'});
    }
   },500);
 }
