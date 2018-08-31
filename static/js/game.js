@@ -39,6 +39,13 @@ socket.on('in_out_game', function(json){
     }
 
 });
+
+//updates the view of user score for all users online
+socket.on('my_score', function(json){
+  let score = json.score;
+  let user = json.user;
+  $('.single.'+user).text(score);
+});
   
 /*************************************************************************************************/
 

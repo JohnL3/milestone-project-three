@@ -161,6 +161,8 @@ def answer():
             my_users[user]['wrong'].append([result[0]['id'],result[0]['answer']])
             
         socketio.emit('in_out_game', {'data': online})
+        score = my_users[user]['score']
+        socketio.emit('my_score',{'score': score,'user':user})
         
         answered_count = len(my_users[user]['answered'])  
         if answered_count == 2:
