@@ -171,11 +171,15 @@ def answer():
 def leaderboard():
     global leader_board
     if 'username' in session:
+        print('USERNAME',session.get('username'))
         user = session.get('username')
         my_users[user]['game-over'] = True
         leader_board = get_leaderboard(my_users, leader_board)
         print('Leaderboard',leader_board)
         
+        return render_template('leaderboard.html', leaders=leader_board)
+    else:
+        leader_board = get_leaderboard(my_users, leader_board)
         return render_template('leaderboard.html', leaders=leader_board)
 
 
