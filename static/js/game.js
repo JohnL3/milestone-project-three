@@ -8,6 +8,31 @@ socket.on('message', function(msg){
       console.log(msg);
   });
   
+// when user clicks home this fires exitgame and removes user from user list of all users online
+$('.home').on('click', function(){
+  let user = $('#username').text();
+  console.log('USER',user);
+  socket.emit('exitgame', user);
+ 
+});
+
+//shows users who are online and who leave
+socket.on('in_out_game', function(json){
+    let online = $('#online-users');
+    online.html('');
+    let users = json.data;
+    
+    console.log('in_out_game',json.data);
+    let user = Object.keys(users);
+    
+    for (let key in user) {
+     let span =`<span class="user usr-name">`+users[user[key]].username+`</span>
+        <span class="user usr-score ` + users[user[key]].username + `">`+users[user[key]].score+`</span>`;
+        online.append(span);
+    }
+
+});
+  
 /*************************************************************************************************/
 
 $('.close-instructions').click(function(){

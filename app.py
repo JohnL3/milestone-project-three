@@ -86,6 +86,9 @@ def game():
             
             leader_board = get_leaderboard(my_users, leader_board)
             print('leader_board',leader_board)
+            
+            socketio.emit('in_out_game', {'data': online})
+            
             return render_template('game.html', username=user, type_id = idType, on_line = online, leader = leader_board)
         else:
             print('user not in my_users adding him',user)
@@ -103,6 +106,9 @@ def game():
                 print('ONLINE',online)
             print('leader_board',leader_board)
             leader_board = get_leaderboard(my_users, leader_board)
+            
+            socketio.emit('in_out_game', {'data': online})
+            
             return render_template('game.html',username=user, type_id = idType, on_line = online, leader = leader_board)
     else:
         return redirect(url_for('index'))
@@ -153,6 +159,8 @@ def answer():
             my_users[session.get('username')]['score'] = my_users[session.get('username')]['score']+1
         else:
             my_users[user]['wrong'].append([result[0]['id'],result[0]['answer']])
+            
+        socketio.emit('in_out_game', {'data': online})
         
         answered_count = len(my_users[user]['answered'])  
         if answered_count == 2:
@@ -187,6 +195,13 @@ def leaderboard():
 def handleMessage(msg):
     socketio.emit('message', {'data': msg}, broadcast=True)
 
+@socketio.on('exitgame')
+def exitgame(user):
+    global online
+    
+    if user in online:
+        online = remove_user_online(user, online)
+        socketio.emit('in_out_game', {'data': online})
 
 
 if __name__ == "__main__":
