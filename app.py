@@ -198,7 +198,6 @@ def handleMessage(msg):
 @socketio.on('exitgame')
 def exitgame(user):
     global online
-    
     if user in online:
         online = remove_user_online(user, online)
         socketio.emit('in_out_game', {'data': online})

@@ -16,6 +16,13 @@ $('.home').on('click', function(){
  
 });
 
+// when user clicks home this fires exitgame and removes user from user list of all users online
+$('.my-leader-board').click(function(){
+  let user = $('#username').text();
+  socket.emit('exitgame', user);
+  
+});
+
 //shows users who are online and who leave
 socket.on('in_out_game', function(json){
     let online = $('#online-users');
