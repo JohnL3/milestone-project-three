@@ -11,6 +11,13 @@ will be displayed.
 You will also see in a mini leaderboard on the page who has answered the most questions correctly
 and in a full leaderboard on another page all users and scores.
 
+## NOTE
+
+As website uses socketio, testing would benefit from having two windows open using different browsers or if using chrome, one normal and an incognito browser
+or two different devices used.  
+As the reason for using socketio is to be able to show other users arriving on game page and there user names showing, seeing other users score update, seeing
+mini leaderboard updating, seeing users usernames removed when they leave. If only one browser window is used none of this interaction will be seen.
+
 ## UX
 
 This website is for everybody who enjoys trying to complete quiz/challange
