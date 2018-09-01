@@ -40,12 +40,12 @@ it is the first time I have attempted it. So I have a feeling it may not look ri
 1. On landing page there are two parts to test first there is a link to the leaderboard page.
   * I clicked this link and it brings me to the leaderboard page: True
 2. On landing page there is a input for getting your username and it has a 12 characther limit
-  * I can only create a username with max 12 characthers: True
-  * I cannot submit an empty input value: True
-3. When i click the button it shuould submit my username and direct me to the game page: True
-4. When I return to the landing page my username should be in the input box saving me having to remember it even if i have closed down
+3. I can only create a username with max 12 characthers: True
+4. I cannot submit an empty input value: True
+5. When i click the button it shuould submit my username and direct me to the game page: True
+6. When I return to the landing page my username should be in the input box saving me having to remember it even if i have closed down
 website and returned later: True
-5. As a person who hasnt created a username yet i can visit leaderboard page: True
+7. As a person who hasnt created a username yet, I can visit leaderboard page: True
 
 
 ### Game page testing
@@ -75,8 +75,8 @@ tab back or close tab.
 10. If another user who is on the game page leaves I should see there name removed: True
 11. If I or another player answers a question correctly i should see mine or others score update: True
 12. If I leave game and my score is in the top 3 it should appear in mini leaderboard: true
-  * I would have to come back to game page to see this: True
-13. If another user scores and leaves game page and there score is in the top 3 I should see there name appear in the mini leaderboard: True
+13. I would have to come back to game page to see this: True
+14. If another user scores and leaves game page and there score is in the top 3 I should see there name appear in the mini leaderboard: True
 
 Note: A little word on how socketIo works
 socketIo works by emmiting events from both server and from the client. When a user visits the game page the online user
