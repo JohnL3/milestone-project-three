@@ -23,8 +23,8 @@ def index():
     session.permanent = True
     username = ''
     '''
-    First if is so I can have username always in input box so person dosent have to try and remember
-    username when the close browser and come back another time if they created one previously.
+    First if... is so I can have username always in input box so person dosent have to try and remember
+    username when they close browser and come back another time if they created one previously.
     And make sure a blank username is not being used by removing required field from input box
     '''
     if 'username' in session and session.get('username') != '':
@@ -70,42 +70,35 @@ def game():
     
     if 'username' in session:
         user = session.get('username')
-        print('user in session', user)
+        
         if user in my_users:
-            print('user in my_users', user)
+            
             del my_users[user]['username']
             my_users[user] = set_up_new_user(user)
             
             if not user in online:
-                print('user not in online', user)
                 online = add_user_online(my_users, user, online)
             else:
-                print('user in online',user)
                 online = remove_user_online(user,online)
                 online = add_user_online(my_users,user,online)
             
             leader_board = get_leaderboard(my_users, leader_board)
-            print('leader_board',leader_board)
             
             socketio.emit('in_out_game', {'data': online})
             socketio.emit('leaders', {'data': leader_board})
             
             return render_template('game.html', username=user, type_id = idType, on_line = online, leader = leader_board[:3])
         else:
-            print('user not in my_users adding him',user)
             user = session.get('username')
             my_users[user] = set_up_new_user(user)
-            print('my_users',my_users)
+            
             if not user in online:
-                print('user not in online addding',user)
                 online = add_user_online(my_users, user, online)
-                print('ONLINE',online)
+                
             else:
-                print('user in online',user)
                 online = remove_user_online(user,online)
                 online = add_user_online(my_users,user,online)
-                print('ONLINE',online)
-            print('leader_board',leader_board)
+                
             leader_board = get_leaderboard(my_users, leader_board)
             
             socketio.emit('in_out_game', {'data': online})
@@ -124,15 +117,6 @@ def questions():
     '''
     if request.method == 'POST':
         data = request.get_json()
-        '''
-        As im using permanent sessions and memory only storage and heroku sleeps
-        Its possible for a user to get here
-        
-        if 'username' in session:
-            if session.get('username') not in my_users:
-                user = session.get('username')
-                my_users[user] = set_up_new_user(user)
-        '''
         
         my_quest = get_question(data['quest_id'])
         
@@ -184,7 +168,6 @@ def answer():
 def leaderboard():
     global leader_board
     if 'username' in session:
-        print('USERNAME',session.get('username'))
         user = session.get('username')
         my_users[user]['game-over'] = True
         leader_board = get_leaderboard(my_users, leader_board)
