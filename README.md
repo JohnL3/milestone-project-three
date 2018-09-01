@@ -98,7 +98,7 @@ For deployment to heroku, you should do the following from cloud9
 
 * Login in to your heroku account using: heroku login  
 * And then entering you heroku email and password
-* Then do: heroku create <name for your website>
+* Then do: heroku create < name for your website >
 * If you do just: heroku create, heroku will create a random name for your website
 * Then do: git push heroku master
 
