@@ -1,4 +1,5 @@
 # Question & Answer
+Project hosted at: [Question & Answer](https://jl-question-answer.herokuapp.com/) 
 
 A simple game of Questions & Answers, in which you click on a panel to receive 
 a question, which you answer and submit by clicking a button.
