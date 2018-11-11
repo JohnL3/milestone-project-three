@@ -4,7 +4,7 @@ from flask_session import Session
 from flask_socketio import SocketIO, send
 import json
 from data.helper import get_question, set_up_new_user, id_type, check_answer, get_leaderboard, add_user_online, update_user_online, remove_user_online
-import config
+
 
 my_users = {}
 leader_board = []
