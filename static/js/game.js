@@ -123,7 +123,7 @@ $('.sqr').click(function(e){
       $(this).css('background','#607D8B');
       
       let data = {"quest_id": clickedOn};
-      let url = 'http://question-answer-johnl3-1.c9users.io/questions';
+      let url = '/questions';
     
       $.ajax({
         type : 'POST',
@@ -145,7 +145,7 @@ $('.sqr').click(function(e){
 // post answer to question to server 
 $('#ans-button').click(()=>{
   
-  let _id = $('.surround').attr('id');
+  let _id = $('.surround').attr('name');
   
   if(Object.getOwnPropertyNames(previousData).length > 2) {
     $('input:checkbox:checked').each(function() {
@@ -184,7 +184,7 @@ $('#ans-button').click(()=>{
 });
 
 function postAnswers(data) {
-  let url = 'http://question-answer-johnl3-1.c9users.io/answer';
+  let url = '/answer';
 
   $.ajax({
       type : 'POST',
@@ -234,7 +234,7 @@ function gameOver() {
 
 //Display question on page add required elements
 function createQA(data, id) {
-$('.surround').attr('id', id);
+$('.surround').attr('name', id);
 
 if (Object.getOwnPropertyNames(data).length > 2) {
   
