@@ -87,7 +87,7 @@ When you clone this repo to cloud9 you will need to create a config.py file whic
 And add the following to it.
 
 ```python
-SECRET_CONFIG = {
+SECRET_KEY = {
     "secret": 'yoursecretkey'
 }
 ```
@@ -101,6 +101,7 @@ For deployment to heroku, you should do the following from cloud9
 * And then entering you heroku email and password
 * Then do: heroku create < name for your website >
 * If you do just: heroku create, heroku will create a random name for your website
+* On heroku go to settings and config vars: add SECRET_KEY and enter your secret key
 * Then do: git push heroku master
 
 When the push is completed you will see your web address in the console, you can copy and past this into browser to visit your site.
