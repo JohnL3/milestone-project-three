@@ -152,7 +152,7 @@ def answer():
         socketio.emit('my_score',{'score': score,'user':user})
         
         answered_count = len(my_users[user]['answered'])  
-        if answered_count == 3:
+        if answered_count == 12:
             my_users[user]['game-over'] = True
             leader_board = get_leaderboard(my_users, leader_board)
             
@@ -194,4 +194,4 @@ def exitgame(user):
 
 
 if __name__ == "__main__":
-    socketio.run(app,host=os.getenv('IP'), port=int(os.getenv('PORT')))
+    socketio.run(app,host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=False)
