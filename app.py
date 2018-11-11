@@ -11,8 +11,14 @@ leader_board = []
 online = {}
 
 app = Flask(__name__)
+app.config['DEBUG'] = False
 
-app.config['SECRET_KEY'] = config.SECRET_CONFIG['secret']
+if app.config['DEBUG'] == False:
+   app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+else:
+    import config
+    app.config['SECRET_KEY'] = config.SECRET_KEY#SECRET_CONFIG
+
 socketio = SocketIO(app)
 
 SESSION_TYPE = 'filesystem'
