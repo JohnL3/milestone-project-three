@@ -152,7 +152,7 @@ def answer():
         socketio.emit('my_score',{'score': score,'user':user})
         
         answered_count = len(my_users[user]['answered'])  
-        if answered_count == 2:
+        if answered_count == 3:
             my_users[user]['game-over'] = True
             leader_board = get_leaderboard(my_users, leader_board)
             
