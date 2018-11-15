@@ -241,10 +241,6 @@ nav {
 .correct:hover {
   cursor: default;
 }
-.correct span,
-.wrong span {
-  font-size: 3.5vw;
-}
 
 .wrong {
   border: 5px solid red;
